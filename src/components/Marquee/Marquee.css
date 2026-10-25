@@ -1,0 +1,241 @@
+/* =========================
+MARQUEE SECTION
+========================= */
+
+.marquee-section {
+position: relative;
+overflow: hidden;
+
+padding: 25px 0 29px;
+
+background: #e9e6fc;
+
+border-top: 1px solid #d9d3f6;
+border-bottom: 1px solid #d9d3f6;
+}
+
+/* Top information */
+
+.marquee-top {
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+gap: 20px;
+
+max-width: 1180px;
+
+margin: 0 auto 22px;
+padding: 0 24px;
+}
+
+.marquee-label {
+display: inline-flex;
+align-items: center;
+
+gap: 8px;
+
+font-size: 10px;
+font-weight: 800;
+
+letter-spacing: 0.14em;
+
+color: #6754c8;
+}
+
+.marquee-label svg {
+animation: marquee-sparkle 3s ease-in-out infinite;
+}
+
+.marquee-caption {
+font-size: 11px;
+
+color: #77718e;
+}
+
+/* =========================
+MOVING TRACK
+========================= */
+
+.marquee-track-wrapper {
+display: flex;
+width: 100%;
+
+overflow: hidden;
+}
+
+.marquee-track {
+display: flex;
+width: max-content;
+
+animation: marquee-scroll 32s linear infinite;
+
+will-change: transform;
+}
+
+.marquee-track-wrapper:hover .marquee-track {
+animation-play-state: paused;
+}
+
+/* Each repeated group */
+
+.marquee-group {
+display: flex;
+flex-shrink: 0;
+align-items: center;
+
+gap: 38px;
+
+padding-right: 38px;
+}
+
+/* Individual item */
+
+.marquee-item {
+display: inline-flex;
+flex-shrink: 0;
+align-items: center;
+
+gap: 38px;
+}
+
+.marquee-text {
+font-size: clamp(25px, 3.3vw, 43px);
+
+font-weight: 800;
+
+letter-spacing: -0.055em;
+
+white-space: nowrap;
+
+color: #25232f;
+
+transition: color 0.25s ease;
+}
+
+.marquee-item:hover .marquee-text {
+color: #7562e7;
+}
+
+.marquee-icon {
+display: grid;
+place-items: center;
+
+width: 42px;
+height: 42px;
+
+flex-shrink: 0;
+
+border: 1px solid #b9afea;
+
+border-radius: 50%;
+
+color: #7764e8;
+
+transition:
+transform 0.3s ease,
+background 0.3s ease,
+color 0.3s ease;
+}
+
+.marquee-item:hover .marquee-icon {
+transform: rotate(45deg);
+
+background: #7764e8;
+color: #ffffff;
+}
+
+/* =========================
+ANIMATIONS
+========================= */
+
+@keyframes marquee-scroll {
+from {
+transform: translateX(0);
+}
+
+to {
+transform: translateX(-50%);
+}
+}
+
+@keyframes marquee-sparkle {
+0%,
+100% {
+transform: rotate(0deg) scale(1);
+}
+
+50% {
+transform: rotate(20deg) scale(1.12);
+}
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media (max-width: 650px) {
+.marquee-section {
+padding: 21px 0 24px;
+}
+
+.marquee-top {
+align-items: flex-start;
+
+
+padding: 0 18px;
+margin-bottom: 19px;
+
+
+}
+
+.marquee-caption {
+max-width: 150px;
+
+text-align: right;
+
+font-size: 10px;
+line-height: 1.5;
+
+
+}
+
+.marquee-group {
+gap: 23px;
+padding-right: 23px;
+}
+
+.marquee-item {
+gap: 23px;
+}
+
+.marquee-text {
+font-size: 27px;
+}
+
+.marquee-icon {
+width: 34px;
+height: 34px;
+}
+
+.marquee-icon svg {
+width: 18px;
+height: 18px;
+}
+
+.marquee-track {
+animation-duration: 25s;
+}
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+.marquee-track {
+animation: none;
+}
+
+.marquee-label svg {
+animation: none;
+}
+}
