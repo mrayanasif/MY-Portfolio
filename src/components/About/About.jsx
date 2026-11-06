@@ -207,9 +207,9 @@ function About() {
               </a>
 
               <a
-                href="/assets/Rayan-CV.pdf"
+                href="/assets/MUHAMMAD_Rayan_CV.pdf"
                 className="about-cv-link"
-                download="Rayan-CV.pdf"
+                download="MUHAMMAD_Rayan_CV.pdf"
               >
                 Download CV
                 <Download size={17} />
