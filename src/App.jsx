@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
 import Marquee from "./components/Marquee/Marquee";
@@ -9,11 +10,29 @@ import Footer from "./components/Footer/Footer";
 import "./styles.css";
 
 function App() {
+  const [theme, setTheme] = useState(() => {
+    try {
+      return localStorage.getItem("rayan-portfolio-theme") === "dark" ? "dark" : "light";
+    } catch {
+      return "light";
+    }
+  });
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    try {
+      localStorage.setItem("rayan-portfolio-theme", theme);
+    } catch {
+      // The theme still works when browser storage is unavailable.
+    }
+  }, [theme]);
+
   return (
     <>
       <div className="site-shell">
 
-        <Navbar />
+        <Navbar theme={theme} onToggleTheme={() => setTheme((current) => current === "light" ? "dark" : "light")} />
 
         <main>
           <Home />

@@ -167,6 +167,32 @@ type: ["mern"],
   type: ["mern", "mobile"],
 },
 
+
+{
+  id: 14,
+  title: "CAMPUS COIN ",
+  category: "Student Budgeting & Expense Management",
+  description:
+    "A modern student budgeting and expense management website built with React Native and Expo. Features a clean interface with dedicated screens for tracking expenses, managing budgets, and visualizing financial data. Designed to help students manage their finances effectively through an intuitive mobile experience.",
+  image: "/assets/images/campus-coin.png",
+  live: "https://campus-coin-seven.vercel.app/",
+  stack: ["React", "JavaScript", "CSS3", "REST API", "MongoDB" ],
+  type: ["mern"],
+},
+
+{
+  id: 15,
+  title: "SPENDIFY",
+  category: "User-Friendly Expense Tracker",
+  description:
+    "A website for tracking expenses and managing budgets, built with React, JavaScript, CSS3, REST API, and MongoDB. Features a clean interface with dedicated screens for adding expenses, viewing transaction history, and visualizing financial data. Designed to help users manage their finances effectively through an intuitive web experience.",
+  image: "/assets/images/spendify.png",
+  live: "https://spendify-snowy.vercel.app/",
+  stack: ["React", "JavaScript", "CSS3", "REST API", "MongoDB" ],
+  type: ["mern"],
+},
+
+
 ];
 
 function ProjectCard({ project, index }) {

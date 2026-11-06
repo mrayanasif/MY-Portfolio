@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react";
 import "./Navbar.css";
 
-function Navbar() {
+function Navbar({ theme, onToggleTheme }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -60,6 +60,11 @@ function Navbar() {
             {link.name}
           </a>
         ))}
+
+        <button className="theme-toggle" type="button" onClick={onToggleTheme} aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`} title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}>
+          {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
+          <span>{theme === "light" ? "Dark" : "Light"}</span>
+        </button>
 
         <a className="nav-cta" href="#contact" onClick={closeMenu}>
           Let's Connect

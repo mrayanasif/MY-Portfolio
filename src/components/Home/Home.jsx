@@ -54,7 +54,7 @@ AVAILABLE FOR OPPORTUNITIES </span>
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
       >
-        Iam a Software engineering student at Aptech and passionate
+        Iam a Software engineering student and passionate
         about building modern web applications, creative user
         interfaces and useful digital products.
       </motion.p>
