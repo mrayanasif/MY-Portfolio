@@ -213,3 +213,53 @@ body, .site-shell { background: var(--paper); color: var(--ink); transition: bac
 @media (prefers-reduced-motion: reduce) {
   .about-profile-card, .about-story-card, .skill-item, .project-card, .project-filter, .theme-toggle, .button, .about-project-link, .about-cv-link, .contact-primary-btn, .contact-secondary-btn { transition: none !important; }
 }
+
+/* Opening screen */
+.boot-screen {
+  --loader-fill: #8b79f6;
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--paper);
+  color: var(--ink);
+  opacity: 1;
+  transition: opacity .45s ease, visibility .45s ease;
+}
+:root[data-theme="dark"] .boot-screen { --loader-fill: var(--lime); }
+.boot-screen-leaving { opacity: 0; visibility: hidden; pointer-events: none; }
+.boot-loader-word {
+  width: fit-content;
+  font-family: "Geist Variable", system-ui, sans-serif;
+  font-size: clamp(44px, 8vw, 88px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.085em;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--ink);
+  --loader-gradient: conic-gradient(var(--loader-fill) 0 0) no-repeat text;
+  background: var(--loader-gradient) 0, var(--loader-gradient) 100%, var(--loader-gradient) 0 0, var(--loader-gradient) 0 100%;
+  animation: boot-name-fill 2.6s linear infinite;
+}
+.boot-loader-word::before { content: "RAYAN ASIF"; }
+.boot-loader-caption {
+  padding-left: .34em;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: .34em;
+}
+@keyframes boot-name-fill {
+  0%, 100% { background-size: 0 100%, 0 100%, 100% 0, 100% 0; }
+  50% { background-size: 55% 100%, 55% 100%, 100% 0, 100% 0; }
+  50.01% { background-size: 0 100%, 0 100%, 100% 55%, 100% 55%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .boot-screen { transition: none; }
+  .boot-loader-word { animation: none; color: var(--loader-fill); -webkit-text-stroke: 0; background: none; }
+}

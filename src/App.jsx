@@ -10,6 +10,8 @@ import Footer from "./components/Footer/Footer";
 import "./styles.css";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoaderLeaving, setIsLoaderLeaving] = useState(false);
   const [theme, setTheme] = useState(() => {
     try {
       return localStorage.getItem("rayan-portfolio-theme") === "dark" ? "dark" : "light";
@@ -28,8 +30,55 @@ function App() {
     }
   }, [theme]);
 
+  useEffect(() => {
+    const minimumTime = 850;
+    const startedAt = performance.now();
+    let finished = false;
+    let fadeTimer;
+    let fallbackTimer;
+    let readyTimer;
+
+    const dismissLoader = () => {
+      if (finished) return;
+      finished = true;
+      setIsLoaderLeaving(true);
+      fadeTimer = window.setTimeout(() => setIsLoading(false), 450);
+      window.clearTimeout(fallbackTimer);
+    };
+
+    const onPageReady = () => {
+      const remaining = Math.max(0, minimumTime - (performance.now() - startedAt));
+      readyTimer = window.setTimeout(dismissLoader, remaining);
+    };
+
+    fallbackTimer = window.setTimeout(dismissLoader, 4500);
+
+    if (document.readyState === "complete") {
+      onPageReady();
+    } else {
+      window.addEventListener("load", onPageReady, { once: true });
+    }
+
+    return () => {
+      window.removeEventListener("load", onPageReady);
+      window.clearTimeout(fadeTimer);
+      window.clearTimeout(fallbackTimer);
+      window.clearTimeout(readyTimer);
+    };
+  }, []);
+
   return (
     <>
+      {isLoading && (
+        <div
+          className={`boot-screen${isLoaderLeaving ? " boot-screen-leaving" : ""}`}
+          role="status"
+          aria-label="Rayan portfolio is loading"
+        >
+          <span className="boot-loader-word" aria-hidden="true" />
+          <span className="boot-loader-caption" aria-hidden="true">PORTFOLIO</span>
+        </div>
+      )}
       <div className="site-shell">
 
         <Navbar theme={theme} onToggleTheme={() => setTheme((current) => current === "light" ? "dark" : "light")} />
