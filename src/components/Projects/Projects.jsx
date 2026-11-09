@@ -36,7 +36,7 @@ const projects = [
   description:
     "A modern hotel management website designed to deliver a seamless user experience through an elegant interface and responsive layouts. Built with React, featuring reusable components, organized sections, and a visually appealing design for a premium hotel experience.",
   image: "/assets/images/hotel.png",
-  live: "https://hotel-management-system-rho-one.vercel.app/",
+  live: "https://hotel-management-system-zcqjip5g6-rayan-8a9a.vercel.app/",
   stack: ["React", "JavaScript", "Tailwind CSS"],
   type: ["mern"],
 },
